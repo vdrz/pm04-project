@@ -6,9 +6,9 @@
 2. Анализ современных информационных систем.
 
 ### Пара №2. 10:05 - 10:50, 10:55 - 11:40
-1. [Разработка руководство оператора в соответствии со стандартом.] (https://docs.google.com/document/d/18o_UZc2vpIlj5Eg2SSiw500YVefKohvy)
+1. [Разработка руководство оператора в соответствии со стандартом.](https://docs.google.com/document/d/18o_UZc2vpIlj5Eg2SSiw500YVefKohvy) 
 
-2. [Оформление руководство с учетом требований к технической документации.] (https://docs.google.com/document/d/18o_UZc2vpIlj5Eg2SSiw500YVefKohvy)
+2. [Оформление руководство с учетом требований к технической документации.](https://docs.google.com/document/d/18o_UZc2vpIlj5Eg2SSiw500YVefKohvy) 
 
 ### Пара №3. 15:50 - 16:35, 16:40 - 17:25
 
@@ -17,7 +17,7 @@
 ### Пара №1. 08:20 - 09:05, 09:10 - 09:55
 1. Прослушивание инструктажа и разъяснение работы.
 
-2. [Создание папки "ПМ04DevOps" на google drive.] (https://drive.google.com/drive/folders/13zr9na74OpFBlzGMBb0dcEpMTEIgJkaG?dmr=1&ec=wgc-drive-globalnav-goto)
+2. Создание папки "ПМ04DevOps" на google drive.
 
 ### Пара №2. 10:05 - 10:50, 10:55 - 11:40
 1. Регистрация на Федеральный проект для студентов под эгидой IT технологий.
@@ -25,6 +25,6 @@
 2. Регистрация на Олимпиаде «Траектория будущего»
 
 ### Пара №3. 15:50 - 16:35, 16:40 - 17:25
-1. [Разработка сценарии внедрения программного продукта для рабочего места в соответствии с ГОСТ Р ИСО/МЭК 1207.] (https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit)
+1. [Разработка сценарии внедрения программного продукта для рабочего места в соответствии с ГОСТ Р ИСО/МЭК 1207.](https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit) 
 
-2. [Оформление плана внедрения.] (https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit)
+2. [Оформление плана внедрения.](https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit) 
