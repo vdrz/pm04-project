@@ -47,7 +47,7 @@
 3. Выполнение планирования целей и задач на день учебной практики в своей репозитории GitHub.
 
 ### Пара №3. 12:20 - 13:05, 13:10 - 13:55
-1. [Разработка сценарии внедрения программного продукта для рабочего места в соответствии с ГОСТ Р ИСО/МЭК 1207.](https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit) 
+1. [Разработка сценария внедрения программного продукта для рабочего места в соответствии с ГОСТ Р ИСО/МЭК 1207.](https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit) 
 
 2. [Оформление плана внедрения.](https://docs.google.com/document/d/1jq5K54hPDvt56FyUjSLpzItRiYtNjjzj/edit)
 
