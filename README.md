@@ -14,7 +14,7 @@
 
 4. Изучение принципов построения интерфейсов
 
-5. [Регистрация и прохождение курса "Основы работы с Git"](https://edu.digtlab.ru/course/view.php?id=26)
+5. Регистрация и [прохождение](https://edu.digtlab.ru/mod/simplecertificate/view.php?id=2648&action=get) курса "[Основы работы с Git](https://edu.digtlab.ru/course/view.php?id=26)"
 
 6. Запись отчета в дневник по практике.
 
