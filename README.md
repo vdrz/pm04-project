@@ -12,6 +12,8 @@
 
 ### Пара №3. 12:20 - 13:05, 13:10 - 13:55
 1. Самостоятельная работа
+
+2. Добавление практик [1](https://github.com/vdrz/Practical-lesson-1), [2](https://github.com/vdrz/Practical-lesson-2), [3](https://github.com/vdrz/Practical-lesson-3), [4](https://github.com/vdrz/Practical-lesson-4) в GitHub репозитории
 # День 8/12 01.11.2025
 
 ### Пара №1. 08:20 - 09:05, 09:10 - 09:55
