@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Простой календарь</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .calendar-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #4a6fa5;
+            color: white;
+        }
+        
+        .calendar-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .calendar-header button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .calendar-header h2 {
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+        
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background-color: #f5f7fa;
+            padding: 10px 0;
+            text-align: center;
+            font-weight: 600;
+            color: #5a6c7d;
+            border-bottom: 1px solid #eaecef;
+        }
+        
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background-color: #eaecef;
+        }
+        
+        .calendar-day {
+            background-color: white;
+            padding: 12px 0;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .calendar-day:hover {
+            background-color: #f0f5ff;
+        }
+        
+        .calendar-day.other-month {
+            color: #a0a4a8;
+        }
+        
+        .calendar-day.today {
+            background-color: #4a6fa5;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .calendar-day.selected {
+            background-color: #e1e8f7;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <div class="calendar-header">
+            <button id="prev-month">&lt;</button>
+            <h2 id="current-month-year">Январь 2023</h2>
+            <button id="next-month">&gt;</button>
+        </div>
+        
+        <div class="calendar-weekdays">
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+            <div>Вс</div>
+        </div>
+        
+        <div class="calendar-days" id="calendar-days">
+            <!-- Дни будут добавлены через JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Текущая дата
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            
+            // Элементы DOM
+            const monthYearElement = document.getElementById('current-month-year');
+            const calendarDaysElement = document.getElementById('calendar-days');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+            
+            // Названия месяцев
+            const monthNames = [
+                "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
+                "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
+            ];
+            
+            // Обновление календаря
+            function updateCalendar() {
+                // Установка заголовка
+                monthYearElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+                
+                // Очистка дней
+                calendarDaysElement.innerHTML = '';
+                
+                // Первый день месяца
+                const firstDay = new Date(currentYear, currentMonth, 1);
+                // Последний день месяца
+                const lastDay = new Date(currentYear, currentMonth + 1, 0);
+                // День недели первого дня месяца (0 - воскресенье, 1 - понедельник и т.д.)
+                const firstDayIndex = firstDay.getDay() === 0 ? 6 : firstDay.getDay() - 1;
+                
+                // Последний день предыдущего месяца
+                const prevLastDay = new Date(currentYear, currentMonth, 0).getDate();
+                
+                // Добавление дней предыдущего месяца
+                for (let i = firstDayIndex; i > 0; i--) {
+                    const day = document.createElement('div');
+                    day.classList.add('calendar-day', 'other-month');
+                    day.textContent = prevLastDay - i + 1;
+                    calendarDaysElement.appendChild(day);
+                }
+                
+                // Добавление дней текущего месяца
+                for (let i = 1; i <= lastDay.getDate(); i++) {
+                    const day = document.createElement('div');
+                    day.classList.add('calendar-day');
+                    day.textContent = i;
+                    
+                    // Проверка, является ли день сегодняшним
+                    if (currentYear === currentDate.getFullYear() && 
+                        currentMonth === currentDate.getMonth() && 
+                        i === currentDate.getDate()) {
+                        day.classList.add('today');
+                    }
+                    
+                    // Обработчик клика по дню
+                    day.addEventListener('click', function() {
+                        // Удаляем выделение у всех дней
+                        document.querySelectorAll('.calendar-day').forEach(d => {
+                            d.classList.remove('selected');
+                        });
+                        // Выделяем выбранный день
+                        day.classList.add('selected');
+                    });
+                    
+                    calendarDaysElement.appendChild(day);
+                }
+                
+                // Добавление дней следующего месяца
+                const totalCells = 42; // 6 строк по 7 дней
+                const daysInCalendar = firstDayIndex + lastDay.getDate();
+                const nextDays = totalCells - daysInCalendar;
+                
+                for (let i = 1; i <= nextDays; i++) {
+                    const day = document.createElement('div');
+                    day.classList.add('calendar-day', 'other-month');
+                    day.textContent = i;
+                    calendarDaysElement.appendChild(day);
+                }
+            }
+            
+            // Переход к предыдущему месяцу
+            prevMonthButton.addEventListener('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                updateCalendar();
+            });
+            
+            // Переход к следующему месяцу
+            nextMonthButton.addEventListener('click', function() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                updateCalendar();
+            });
+            
+            // Инициализация календаря
+            updateCalendar();
+        });
+    </script>
+</body>
+</html>
