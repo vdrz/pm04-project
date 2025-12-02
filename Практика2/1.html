@@ -1,0 +1,222 @@
+<!doctype html><html><head><style type="text/css">:root{
+  --bg: #0e0f14;
+  --card: #151923;
+  --text: #e9eefc;
+  --muted: #a9b6d6;
+  --accent: #4cc9f0;
+  --shadow: rgba(0,0,0,.4);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(circle at 20% 0%, rgba(76,201,240,.08), transparent 40%), 
+              radial-gradient(circle at 80% 0%, rgba(236,72,153,.08), transparent 40%), 
+              var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+.wrap {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  letter-spacing: .5px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), rgba(255,255,255,.05) 40%), #1e2a3a;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  position: relative;
+  border: 1px solid #2a3244;
+}
+.shape-btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: #3b82f6;
+  padding: 12px 18px;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: transform .08s ease, box-shadow .2s ease, background .3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  width: 140px;
+  height: 140px;
+  clip-path: circle(50% at 50% 50%);
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+}
+
+.shape-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+.shape-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 3px 8px rgba(0,0,0,.25);
+}
+
+[data-shape="triangle"] {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  width: 120px;
+  height: 120px;
+}
+
+[data-shape="star"] {
+  clip-path: polygon(
+    50% 0%,
+    61% 35%, 98% 35%,
+    68% 57%, 79% 91%,
+    50% 70%, 21% 91%,
+    32% 57%, 2% 35%,
+    39% 35%
+  );
+  width: 120px;
+  height: 120px;
+}
+
+[data-shape="hex"] {
+  clip-path: polygon(
+    25% 6.7%,
+    75% 6.7%,
+    100% 50%,
+    75% 93.3%,
+    25% 93.3%,
+    0% 50%
+  );
+  width: 120px;
+  height: 120px;
+}
+
+[data-shape="oct"] {
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 30%,
+    100% 70%,
+    70% 100%,
+    30% 100%,
+    0% 70%,
+    0% 30%
+  );
+  width: 120px;
+  height: 120px;
+}
+
+[data-shape="oval"] {
+  clip-path: ellipse(60% 50% at 50% 50%);
+  width: 170px;
+  height: 110px;
+  border-radius: 50px;
+}
+
+[data-shape="oval-double"] {
+  width: 180px;
+  height: 110px;
+  border-radius: 50px;
+  position: relative;
+  background: #3b82f6;
+}
+[data-shape="oval-double"]::before,
+[data-shape="oval-double"]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: #3b82f6;
+}
+[data-shape="oval-double"]::before { left: -25%; border-radius: 60px 0 60px 60px; transform: rotate(0deg); }
+[data-shape="oval-double"]::after  { right: -25%; border-radius: 0 60px 60px 0; transform: rotate(0deg); }
+
+[data-shape="triangle"] { background: linear-gradient(#3b82f6, #1e3a8a); }
+[data-shape="hex"] { background: linear-gradient(#10b981, #0b3a3a); }
+[data-shape="oct"] { background: linear-gradient(#f59e0b, #b45309); }
+[data-shape="oval"] { background: linear-gradient(#8b5cf6, #4c1d95); }
+[data-shape="oval-double"] { background: linear-gradient(#06b6d4, #0369a1); }
+
+.circle .shape-btn {
+  padding: 0;
+  width: 140px;
+  height: 140px;
+  display: grid;
+  place-items: center;
+}</style></head><body><!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Кнопки-формы</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<main class="wrap">
+		<h1>Кнопка как элемент управления: различные формы</h1>
+
+		<section class="controls">
+			<div class="circle">
+				<button class="shape-btn" aria-label="Создать элемент" id="btn-triangle" data-shape="triangle">
+          Создать
+        </button>
+			</div>
+			<button class="shape-btn" aria-label="Создать элемент: шестиугольник" data-shape="hex" id="btn-hex">Создать</button>
+			<button class="shape-btn" aria-label="Создать элемент: восьмиугольник" data-shape="oct" id="btn-oct">Создать</button>
+			<button class="shape-btn" aria-label="Создать элемент: овальная" data-shape="oval" id="btn-oval">Создать</button>
+			<button class="shape-btn" aria-label="Создать элемент: двойная овальная" data-shape="oval-double" id="btn-oval-double">Создать</button>
+		</section>
+		<section class="legend">
+
+		
+		</section>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+
+</html><script type="text/javascript">
+function randInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function handleClick(e) {
+  const btn = e.currentTarget;
+  const shape = btn.getAttribute('data-shape');
+  alert(`Создан элемент: форма = ${shape}`);
+}
+
+function init() {
+  const buttons = document.querySelectorAll('.shape-btn');
+  buttons.forEach(b => b.addEventListener('click', handleClick));
+}
+
+document.addEventListener('DOMContentLoaded', init);</script></body><html>
